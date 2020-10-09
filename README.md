@@ -14,7 +14,7 @@ Do a maven build and run it as a spring boot application
 **Restifier** by default starts on the port 11011 and can be accessed through the below links to view and test the sample configurations
 
 ```
- http://localhost:11011/endpoints
+ http://localhost:11011/
 ```
 
 
@@ -38,23 +38,23 @@ This framework supports the following features, which can be chained through a c
 
 ### Invoker 
 
-Used to invoke a backend service. 
+Invokers are used to invoke any backend service. Typically they form the 1st step in the pipeline of the configuration. Output from the Invoker can be chained through to convert and reformat it before sendind the final response back 
 
-Types of invokers supported:
+Types of invokers currently supported are:
 
-	|Type|Details|
-	|---|---|
-	|SoapServiceInvoker|To invoke a SOAP service|
-	|RestServiceInvoker|To invoke a REST service|
-	|SQLQueryServiceInvoker|To execute SQL query|
-	|FileServiceInvoker|To process a file template|
+	| Type | Details |
+	| --- | --- |
+	| SoapServiceInvoker | To invoke a SOAP service |
+	| RestServiceInvoker | To invoke a REST service |
+	| SQLQueryServiceInvoker | To execute SQL query |
+	| FileServiceInvoker | To process a file template |
 
 
 ### Transformer
 
-Used to transform the structure of the response. 
+Transformers are used to transform the structure of the response. 
 
-Types of transformers supported:
+Types of transformers currently supported are:
 
 	|Type|Details|
 	|---|---|
@@ -64,9 +64,9 @@ Types of transformers supported:
 
 ### Converter
 
-Used to convert the response from one format to the other. 
+convertors are used to convert the response from one format to the other, like XML to JSON,.. 
 
-Types of converter's supported:
+Types of converter's currently supported are:
 
 	|Type|Details|
 	|---|---|
@@ -77,9 +77,9 @@ Types of converter's supported:
 
 ### Accumulator
 
-Used to accumulate the response when chaining the processing. 
+Accumulators are used to accumulate the response when chaining the processing. When more then one service needs to be invoked and multiple results are needed for the processing chain and/or to send the final response, accumulators can be used to hold them all and use it for further processing   
 
-Types of accumulators supported:
+Types of accumulators currently supported are:
 
 	|Type|Details|
 	|---|---|
@@ -89,9 +89,9 @@ Types of accumulators supported:
 
 ### Digester
 
-Used to extract parameters from the response when chaining the processing. 
+Digestor extracts parameters from the response when chaining the processing. Used when output from one service is needed as input to the next service in the invocation chain 
 
-Types of digester's supported:
+Types of digester's currently supported are:
 
 	|Type|Details|
 	|---|---|
@@ -101,14 +101,17 @@ Types of digester's supported:
 
 ### Executor
 
-Used to execute more than one service at one go. 
+Executors are used to execute more than one service at one go. Typically used when more then one service needs to be executed and result of all needs to be sent back as response 
 
-Types of executors supported:
+Types of executors currently supported are:
 
 	|Type|Details|
 	|---|---|
 	|SequentialExecutor|Executes the list of services sequentially|
 	|ParallelExecutor|Executes the list of services in parallel|
+
+
+## Sample configurations
 
 
 **Reservation**
